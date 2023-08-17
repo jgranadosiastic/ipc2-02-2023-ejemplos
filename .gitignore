@@ -18,3 +18,5 @@ buildNumber.properties
 *.class
 *.jar
 *.war
+/HTML_estatico/nbproject/private/
+**/nbproject/*
