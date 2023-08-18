@@ -1,0 +1,27 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Aug 16, 2023, 7:55:58 PM
+    Author     : jose
+*/
+
+.parrafo-verde {
+    background: blue;
+    color: white;
+}
+
+div {
+    width: 200px;
+    border-style: solid;
+}
+
+.body-only {
+    background: red;
+}
+
+#div1 {
+    width: 300px;
+    background: yellow;
+}

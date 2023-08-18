@@ -20,3 +20,4 @@ buildNumber.properties
 *.war
 /HTML_estatico/nbproject/private/
 **/nbproject/*
+nb-configuration.xml
