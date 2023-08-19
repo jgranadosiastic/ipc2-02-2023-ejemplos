@@ -9,21 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page="/includes/resources.jsp"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>GET</h1>
-        <div>
-            Nombre: <%= request.getParameter("nombre")%> <br>
-            Apellidos: <%= request.getParameter("apellidos")%> <br>
+        <jsp:include page="/includes/header.jsp"/>
+        <div class="container">
+            <h1>GET</h1>
             <div>
+                Nombre: <%= request.getParameter("nombre")%> <br>
+                Apellidos: <%= request.getParameter("apellidos")%> <br>
+                <div>
 
-                <% if ("on".equals(request.getParameter("aprobado"))) { %>
-                <p>Ha sido aprobado</p>
-                <% } else { %>
-                <p>Ha sido reprobado</p>
-                <%}%>
+                    <% if ("on".equals(request.getParameter("aprobado"))) { %>
+                    <p>Ha sido aprobado</p>
+                    <% } else { %>
+                    <p>Ha sido reprobado</p>
+                    <%}%>
+                </div>
             </div>
         </div>
+        <jsp:include page="/includes/footer.jsp"/>
     </body>
 </html>
