@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Form POST jsp</h1>
-                    <form method="POST" action="post-action.jsp">
+                    <form method="POST" action="${pageContext.request.contextPath}/mvc/student-servlet">
                         <label>Carnet</label>
                         <input class="form-control" id="carnet" name="carnet"/>
                         

@@ -40,7 +40,7 @@ public class DBEstudiante {
 
     }
 
-    public boolean crearEstudiante(Estudiante estudiante) {
+    public Estudiante crearEstudiante(Estudiante estudiante) {
         try {
             PreparedStatement insert = connection.prepareStatement(INSERT);
             insert.setString(1, estudiante.getCarnet());
@@ -49,11 +49,13 @@ public class DBEstudiante {
             insert.setDate(4, Date.valueOf(estudiante.getFechaNacimiento()));
 
             insert.executeUpdate();
+            
+            return estudiante;
         } catch (SQLException ex) {
             // TODO pendiente manejo
             ex.printStackTrace();
         }
 
-        return true;
+        return null;
     }
 }

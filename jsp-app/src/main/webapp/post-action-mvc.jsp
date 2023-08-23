@@ -5,6 +5,7 @@
     MVC: Model-View-Controller
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.jgranados.jsp.app.db.DBEstudiante"%>
 <%@page import="com.jgranados.jsp.app.db.Estudiante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,29 +17,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            Estudiante estudiante = new Estudiante(request.getParameter("carnet"), 
-                    request.getParameter("nombre"), 
-                    request.getParameter("apellidos"), 
-                    request.getParameter("fechaNacimiento"));
-            
-                    DBEstudiante dbEstudiante = new DBEstudiante();
-                    boolean result = dbEstudiante.crearEstudiante(estudiante);
-
-        %>
         <jsp:include page="/includes/header.jsp"/>
         <div class="container">
             <h1>POST</h1>
             <div>
-                Nombre: <%= request.getParameter("nombre")%> <br>
-                Apellidos: <%= request.getParameter("apellidos")%> <br>
+                Nombre: ${estudiante.nombre} <br>
+                Apellidos: ${estudiante.apellidos} <br>
                 <div>
 
-                    <% if (result) { %>
-                    <p>Ha sido insertado</p>
-                    <% } else { %>
-                    <p>Ha fallado</p>
-                    <%}%>
+                    <c:if test="${estudiante != null}">
+                        <p>Ha sido insertado</p>
+                    </c:if>
+                    <c:if test="${estudiante == null}">
+                        <p>Ha fallado</p>
+                    </c:if>
                 </div>
             </div>
         </div>
