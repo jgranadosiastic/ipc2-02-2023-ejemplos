@@ -9,6 +9,8 @@ import java.time.LocalDate;
 /**
  *
  * @author jose
+ * POJO
+ * Plain Old Java Object
  */
 public class Estudiante {
     private String carnet;
@@ -21,6 +23,13 @@ public class Estudiante {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaNacimiento = LocalDate.now();
+    }
+    
+    public Estudiante(String carnet, String nombre, String apellidos, LocalDate fechaNacimiento) {
+        this.carnet = carnet;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getCarnet() {

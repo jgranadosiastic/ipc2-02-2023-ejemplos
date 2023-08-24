@@ -15,6 +15,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -35,7 +37,11 @@ public class StudentsManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        if (request.getParameter("carnet") == null) {
+            this.loadList(request, response);
+        } else {
+            this.loadStudent(request, response, request.getParameter("carnet"));
+        }
     }
 
     /**
@@ -58,20 +64,39 @@ public class StudentsManagerServlet extends HttpServlet {
             DBEstudiante dbEstudiante = new DBEstudiante();
             estudiante = dbEstudiante.crearEstudiante(estudiante);
             request.setAttribute("estudiante", estudiante);
-            
+
             //Forward
             RequestDispatcher dispatcher = getServletContext()
-                    .getRequestDispatcher("/post-action-mvc.jsp");
+                    .getRequestDispatcher(this.getServletContext().getContextPath() + "/students/post-action-mvc.jsp");
             dispatcher.forward(request, response);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (InvalidDataException ex) {
             request.setAttribute("errorMessage", ex.getMessage());
             //Forward
             RequestDispatcher dispatcher = getServletContext()
-                    .getRequestDispatcher("/post-action-mvc.jsp");
+                    .getRequestDispatcher(this.getServletContext().getContextPath() + "/students/post-action-mvc.jsp");
             dispatcher.forward(request, response);
         }
 
+    }
+
+    private void loadList(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        DBEstudiante dbEstudiante = new DBEstudiante();
+        List<Estudiante> estudiantes = dbEstudiante.getAll();
+
+        request.setAttribute("estudiantes", estudiantes);
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/students/list.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void loadStudent(HttpServletRequest request, HttpServletResponse response, String carnet) throws ServletException, IOException {
+        DBEstudiante dbEstudiante = new DBEstudiante();
+        Optional<Estudiante> studentOpt = dbEstudiante.getStudentByCarnet(carnet);
+        request.setAttribute("estudianteOpt", studentOpt);
+
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/students/details.jsp");
+        dispatcher.forward(request, response);
     }
 }
