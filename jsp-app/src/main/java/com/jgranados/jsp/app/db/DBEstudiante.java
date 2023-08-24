@@ -4,6 +4,7 @@
  */
 package com.jgranados.jsp.app.db;
 
+import com.jgranados.jsp.app.exceptions.InvalidDataException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -40,7 +42,10 @@ public class DBEstudiante {
 
     }
 
-    public Estudiante crearEstudiante(Estudiante estudiante) {
+    public Estudiante crearEstudiante(Estudiante estudiante) throws InvalidDataException {
+
+        validar(estudiante);
+// Create Read Update Delete
         try {
             PreparedStatement insert = connection.prepareStatement(INSERT);
             insert.setString(1, estudiante.getCarnet());
@@ -49,7 +54,7 @@ public class DBEstudiante {
             insert.setDate(4, Date.valueOf(estudiante.getFechaNacimiento()));
 
             insert.executeUpdate();
-            
+
             return estudiante;
         } catch (SQLException ex) {
             // TODO pendiente manejo
@@ -57,5 +62,15 @@ public class DBEstudiante {
         }
 
         return null;
+    }
+
+    private void validar(Estudiante estudiante) throws InvalidDataException {
+        if (StringUtils.isEmpty(estudiante.getCarnet())) {
+            throw new InvalidDataException("El carnet del estudiante es requerido.");
+        }
+
+        if (estudiante.getCarnet().length() > 10) {
+            throw new InvalidDataException("El carnet no debe de tener mas de 10 caracteres.");
+        }
     }
 }

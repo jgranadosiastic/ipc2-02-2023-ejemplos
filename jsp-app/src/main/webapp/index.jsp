@@ -38,16 +38,19 @@
                     <h1>Form POST jsp</h1>
                     <form method="POST" action="${pageContext.request.contextPath}/mvc/student-servlet">
                         <label>Carnet</label>
-                        <input class="form-control" id="carnet" name="carnet"/>
+                        <input class="form-control" id="carnet" name="carnet" required
+                               maxlength="10"/>
                         
                         <label>Nombre</label>
-                        <input class="form-control" id="nombre" name="nombre"/>
+                        <input class="form-control" id="nombre" name="nombre" required
+                               maxlength="25"/>
 
                         <label>Apellidos</label>
-                        <input class="form-control" id="apellidos" name="apellidos"/>
+                        <input class="form-control" id="apellidos" name="apellidos" required
+                               maxlength="25"/>
 
                         <label>fecha nacimiento</label>
-                        <input type="date" pattern="\d{4}-\d{2}-\d{2} name="fechaNacimiento"/>
+                        <input type="date" pattern="\d{4}-\d{2}-\d{2} name="fechaNacimiento" required/>
 
                         <button class="btn btn-primary" type="submit">Enviar!</button>
                     </form>

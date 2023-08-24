@@ -29,7 +29,7 @@
                         <p>Ha sido insertado</p>
                     </c:if>
                     <c:if test="${estudiante == null}">
-                        <p>Ha fallado</p>
+                        <p>Ha fallado por el siguiente motivo: ${errorMessage}</p>
                     </c:if>
                 </div>
             </div>

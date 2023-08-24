@@ -6,6 +6,7 @@ package com.jgranados.jsp.app.mvc.servlet;
 
 import com.jgranados.jsp.app.db.DBEstudiante;
 import com.jgranados.jsp.app.db.Estudiante;
+import com.jgranados.jsp.app.exceptions.InvalidDataException;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -63,6 +64,13 @@ public class StudentsManagerServlet extends HttpServlet {
                     .getRequestDispatcher("/post-action-mvc.jsp");
             dispatcher.forward(request, response);
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvalidDataException ex) {
+            request.setAttribute("errorMessage", ex.getMessage());
+            //Forward
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/post-action-mvc.jsp");
+            dispatcher.forward(request, response);
         }
 
     }
