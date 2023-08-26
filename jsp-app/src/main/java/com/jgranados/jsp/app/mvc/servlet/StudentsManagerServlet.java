@@ -95,8 +95,14 @@ public class StudentsManagerServlet extends HttpServlet {
         Optional<Estudiante> studentOpt = dbEstudiante.getStudentByCarnet(carnet);
         request.setAttribute("estudianteOpt", studentOpt);
 
-        RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/students/details.jsp");
-        dispatcher.forward(request, response);
+        if (request.getParameter("ajax") == null) {
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/students/details.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/students/details-ajax.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }

@@ -17,3 +17,8 @@ function hideShow() {
 function loadAjax() {
     $('#ajax').load('ajax-content.html');
 }
+
+function loadDetails(carnet, context) {
+    $('#ajax-detail').load(context + '/mvc/student-servlet?ajax=1&carnet=' + carnet);
+}
+
