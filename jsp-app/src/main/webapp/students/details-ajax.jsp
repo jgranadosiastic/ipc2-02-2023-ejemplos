@@ -11,20 +11,40 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <c:if test="${estudianteOpt.present}">
-    <div class="row">
-        <div class="col-md-12 card">
-            <div class="card-body">
-                <h5 class="card-title">Carnet: ${estudianteOpt.get().carnet}</h5>
-                <p class="card-text">Nombre: ${estudianteOpt.get().nombre}</p>
-                <p class="card-text">Apellidos: ${estudianteOpt.get().apellidos}</p>
-                <p class="card-text">Fecha NAcimiento: ${estudianteOpt.get().fechaNacimiento}</p>
-            </div>
-
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Carnet: ${estudianteOpt.get().carnet}</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <p class="card-text">Nombre: ${estudianteOpt.get().nombre}</p>
+            <p class="card-text">Apellidos: ${estudianteOpt.get().apellidos}</p>
+            <p class="card-text">Fecha NAcimiento: ${estudianteOpt.get().fechaNacimiento}</p>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
 </c:if>
 <c:if test="${!estudianteOpt.present}">
-    <div class="alert alert-danger" role="alert">
-        Es estudiante no existe!
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Error</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="alert alert-danger" role="alert">
+                Es estudiante no existe!
+            </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
     </div>
 </c:if>
