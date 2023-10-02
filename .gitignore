@@ -21,3 +21,46 @@ buildNumber.properties
 /HTML_estatico/nbproject/private/
 **/nbproject/*
 nb-configuration.xml
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+app_angular/dist
+app_angular/tmp
+app_angular/out-tsc
+app_angular/bazel-out
+
+# Node
+app_angular/node_modules
+app_angularnpm-debug.log
+app_angularyarn-error.log
+
+# IDEs and editors
+app_angular/.idea/
+app_angular/.project
+app_angular/.classpath
+app_angular/.c9/
+app_angular/*.launch
+app_angular/.settings/
+app_angular/*.sublime-workspace
+
+# Visual Studio Code
+app_angular/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+/app_angular/.history/*
+
+# Miscellaneous
+app_angular/.angular/cache
+app_angular/.sass-cache/
+app_angular/connect.lock
+app_angular/coverage
+app_angular/libpeerconnection.log
+app_angular/testem.log
+app_angular/typings
+
+# System files
+app_angular/.DS_Store
+app_angular/Thumbs.db
