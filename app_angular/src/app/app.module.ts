@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { StudentFormComponent } from './student-form/student-form.component';
@@ -20,7 +20,8 @@ import { StudentListComponent } from './student-list/student-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

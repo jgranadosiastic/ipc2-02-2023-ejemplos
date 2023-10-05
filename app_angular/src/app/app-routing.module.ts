@@ -6,10 +6,12 @@ import { StudentListComponent } from './student-list/student-list.component';
 const routes: Routes = [
   {
     path: "",
+    title: "Crear",
     component: StudentFormComponent
   },
   {
     path: "list",
+    title: "Listado",
     component: StudentListComponent
   }
 ];

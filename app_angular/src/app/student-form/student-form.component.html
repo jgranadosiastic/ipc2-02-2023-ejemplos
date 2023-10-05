@@ -1,1 +1,55 @@
-<p>student-form works!</p>
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Form POST angular</h1>
+            <form [formGroup]="estudianteForm" (ngSubmit)="submit()">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inputAddress">Carnet</label>
+                        <input class="form-control"
+                        [class.is-invalid]="estudianteForm.controls['carnet'].invalid && estudianteForm.controls['carnet'].touched"
+                         id="carnet" name="carnet" formControlName="carnet"/>
+                         <div *ngIf="estudianteForm.controls['carnet'].invalid && (estudianteForm.controls['carnet'].dirty || estudianteForm.controls['carnet'].touched)" class="alert">
+                            <div >
+                            Por favor ingrese un carnet, maximo 10 carateres
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="inputAddress">Nombre</label>
+                        <input class="form-control" 
+                        [class.is-invalid]="estudianteForm.controls['nombre'].invalid && estudianteForm.controls['nombre'].touched"
+                        id="nombre" name="nombre" formControlName="nombre"/>
+                      </div>
+
+
+
+                      <div class="form-group">
+                        <label for="inputAddress">Apellidos</label>
+                        <input class="form-control"
+                        [class.is-invalid]="estudianteForm.controls['apellidos'].invalid && estudianteForm.controls['apellidos'].touched"
+                         id="apellidos" name="apellidos" formControlName="apellidos"/>
+                      </div>
+
+
+                      <div class="form-group col-md-2">
+                        <label for="inputAddress">Fecha nacimiento</label>
+                        <input type="date" class="form-control"
+                 name="fechaNacimiento" formControlName="fechaNacimiento"/>
+                      </div>
+                </div>
+            
+
+                <button class="btn btn-primary" (click)="limpiar()"
+                >Limpiar</button>
+
+                <button class="btn btn-success" type="submit"
+                [disabled]="estudianteForm.invalid"
+                >Enviar!</button>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
