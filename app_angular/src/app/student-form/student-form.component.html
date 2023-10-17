@@ -2,6 +2,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+          <div class="alert alert-success" role="alert" *ngIf="saved">
+            Estudiante creado exitosamente.
+          </div>
             <h1>Form POST angular</h1>
             <form [formGroup]="estudianteForm" (ngSubmit)="submit()">
                 <div class="form-row">

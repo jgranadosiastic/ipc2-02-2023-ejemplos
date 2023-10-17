@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Estudiante } from '../../entities/Estudiante';
+import { EstudianteService } from '../../services/estudiantes/EstudianteService';
 
 @Component({
   selector: 'app-student-form',
@@ -8,8 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class StudentFormComponent implements OnInit {
   estudianteForm!: FormGroup;
+  estudiante!: Estudiante;
+  saved: boolean;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private estudianteService: EstudianteService) {
+    this.saved = false;
 
   }
 
@@ -20,21 +26,29 @@ export class StudentFormComponent implements OnInit {
       apellidos: [null, [Validators.required, Validators.maxLength(25)]],
       fechaNacimiento: [null]
     });
-
-    
   }
 
   submit(): void {
-    //if (this.estudianteForm.valid) {
-      console.log(this.estudianteForm);
-    //}
+    if (this.estudianteForm.valid) {
+      this.estudiante = this.estudianteForm.value as Estudiante;
+      this.estudianteService.createEstudiante(this.estudiante).subscribe({
+        next: (created: Estudiante) => {
+          console.log("creataeds" + created);
+          this.limpiar();
+          this.saved = true;
+        },
+        error: (error: any) => {
+          console.log("error");
+        }
+      });
+    }
   }
 
-  limpiar() :void {
+  limpiar(): void {
     this.estudianteForm.reset({
-      
+
     });
-    console.log("reset");
+
   }
 
 
