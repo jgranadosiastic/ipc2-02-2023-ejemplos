@@ -1,58 +1,79 @@
 <app-header></app-header>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-          <div class="alert alert-success" role="alert" *ngIf="saved">
-            Estudiante creado exitosamente.
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="saved">
+        Estudiante creado exitosamente.
+      </div>
+      <h1>Form POST angular</h1>
+      <form [formGroup]="estudianteForm" (ngSubmit)="submit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="inputAddress">Carnet</label>
+            <input class="form-control"
+              [class.is-invalid]="estudianteForm.controls['carnet'].invalid && estudianteForm.controls['carnet'].touched"
+              id="carnet" name="carnet" formControlName="carnet" />
+            <div
+              *ngIf="estudianteForm.controls['carnet'].invalid && (estudianteForm.controls['carnet'].dirty || estudianteForm.controls['carnet'].touched)"
+              class="invalid-feedback">
+              <div>
+                Por favor ingrese un carnet, maximo 10 carateres
+              </div>
+            </div>
           </div>
-            <h1>Form POST angular</h1>
-            <form [formGroup]="estudianteForm" (ngSubmit)="submit()">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="inputAddress">Carnet</label>
-                        <input class="form-control"
-                        [class.is-invalid]="estudianteForm.controls['carnet'].invalid && estudianteForm.controls['carnet'].touched"
-                         id="carnet" name="carnet" formControlName="carnet"/>
-                         <div *ngIf="estudianteForm.controls['carnet'].invalid && (estudianteForm.controls['carnet'].dirty || estudianteForm.controls['carnet'].touched)" class="alert">
-                            <div >
-                            Por favor ingrese un carnet, maximo 10 carateres
-                          </div>
-                        </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="inputAddress">Nombre</label>
-                        <input class="form-control" 
-                        [class.is-invalid]="estudianteForm.controls['nombre'].invalid && estudianteForm.controls['nombre'].touched"
-                        id="nombre" name="nombre" formControlName="nombre"/>
-                      </div>
+          <div class="form-group">
+            <label for="inputAddress">Nombre</label>
+            <input class="form-control"
+              [class.is-invalid]="estudianteForm.controls['nombre'].invalid && estudianteForm.controls['nombre'].touched"
+              id="nombre" name="nombre" formControlName="nombre" />
+
+            <div
+              *ngIf="estudianteForm.controls['nombre'].invalid && (estudianteForm.controls['nombre'].dirty || estudianteForm.controls['nombre'].touched)"
+              class="invalid-feedback">
+              <div>
+                Por favor ingrese el nombre, maximo 25 carateres
+              </div>
+            </div>
+          </div>
 
 
+          <div class="form-group">
+            <label for="inputAddress">Apellidos</label>
+            <input class="form-control"
+              [class.is-invalid]="estudianteForm.controls['apellidos'].invalid && estudianteForm.controls['apellidos'].touched"
+              id="apellidos" name="apellidos" formControlName="apellidos" />
 
-                      <div class="form-group">
-                        <label for="inputAddress">Apellidos</label>
-                        <input class="form-control"
-                        [class.is-invalid]="estudianteForm.controls['apellidos'].invalid && estudianteForm.controls['apellidos'].touched"
-                         id="apellidos" name="apellidos" formControlName="apellidos"/>
-                      </div>
+            <div
+              *ngIf="estudianteForm.controls['apellidos'].invalid && (estudianteForm.controls['apellidos'].dirty || estudianteForm.controls['apellidos'].touched)"
+              class="invalid-feedback">
+              <div>
+                Por favor ingrese apellidos, maximo 25 carateres
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="inputAddress">Fecha nacimiento</label>
+            <input type="date" class="form-control" name="fechaNacimiento" formControlName="fechaNacimiento"
+            [class.is-invalid]="estudianteForm.controls['fechaNacimiento'].invalid &&
+            estudianteForm.controls['fechaNacimiento'].touched"/>
+            <div
+              *ngIf="estudianteForm.controls['fechaNacimiento'].invalid && (estudianteForm.controls['fechaNacimiento'].dirty || estudianteForm.controls['fechaNacimiento'].touched)"
+              class="invalid-feedback">
+              <div>
+                Por favor ingrese fecha nacimiento
+              </div>
+            </div>
+          </div>
 
 
-                      <div class="form-group col-md-2">
-                        <label for="inputAddress">Fecha nacimiento</label>
-                        <input type="date" class="form-control"
-                 name="fechaNacimiento" formControlName="fechaNacimiento"/>
-                      </div>
-                </div>
-            
+          <button class="btn btn-primary" (click)="limpiar()">Limpiar</button>
 
-                <button class="btn btn-primary" (click)="limpiar()"
-                >Limpiar</button>
-
-                <button class="btn btn-success" type="submit"
-                [disabled]="estudianteForm.invalid"
-                >Enviar!</button>
-            </form>
+          <button class="btn btn-success" type="submit" [disabled]="estudianteForm.invalid">Enviar!</button>
         </div>
+      </form>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>

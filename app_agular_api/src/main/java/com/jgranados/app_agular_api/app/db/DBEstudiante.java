@@ -49,9 +49,9 @@ public class DBEstudiante {
 
     }
 
-    public Estudiante crearEstudiante(Estudiante estudiante) throws InvalidDataException {
+    public Estudiante crearEstudiante(Estudiante estudiante) {
 
-        validar(estudiante);
+        
 // Create Read Update Delete
         try {
             PreparedStatement insert = connection.prepareStatement(INSERT);
@@ -115,15 +115,8 @@ public class DBEstudiante {
         
         return Optional.empty();
     }
-
-    private void validar(Estudiante estudiante) throws InvalidDataException {
-        if (StringUtils.isEmpty(estudiante.getCarnet()) ||
-                StringUtils.isBlank(estudiante.getCarnet())) {
-            throw new InvalidDataException("El carnet del estudiante es requerido.");
-        }
-
-        if (estudiante.getCarnet().length() > 10) {
-            throw new InvalidDataException("El carnet no debe de tener mas de 10 caracteres.");
-        }
+    
+    public void deleteStudent(String carnet) {
+        // TODO
     }
 }

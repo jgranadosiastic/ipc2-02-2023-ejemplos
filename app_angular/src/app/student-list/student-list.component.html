@@ -1,5 +1,8 @@
 <app-header></app-header>
 <div class="container">
-    <p>student-list works!</p>
+    <h1>LIST</h1>
+    <div class="row">
+        <app-student-card *ngFor="let student of studentList"></app-student-card>
+    </div>
 </div>
 <app-footer></app-footer>

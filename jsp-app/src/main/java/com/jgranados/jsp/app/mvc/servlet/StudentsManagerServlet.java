@@ -67,13 +67,14 @@ public class StudentsManagerServlet extends HttpServlet {
 
             //Forward
             RequestDispatcher dispatcher = getServletContext()
-                    .getRequestDispatcher(this.getServletContext().getContextPath() + "/students/post-action-mvc.jsp");
+                    .getRequestDispatcher("/students/post-action-mvc.jsp");
             dispatcher.forward(request, response);
         } catch (InvalidDataException ex) {
+            ex.printStackTrace();
             request.setAttribute("errorMessage", ex.getMessage());
             //Forward
             RequestDispatcher dispatcher = getServletContext()
-                    .getRequestDispatcher(this.getServletContext().getContextPath() + "/students/post-action-mvc.jsp");
+                    .getRequestDispatcher("/students/post-action-mvc.jsp");
             dispatcher.forward(request, response);
         }
 

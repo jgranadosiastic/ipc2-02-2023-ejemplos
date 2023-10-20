@@ -24,7 +24,7 @@ export class StudentFormComponent implements OnInit {
       carnet: [null, [Validators.required, Validators.maxLength(10)]],
       nombre: [null, [Validators.required, Validators.maxLength(25)]],
       apellidos: [null, [Validators.required, Validators.maxLength(25)]],
-      fechaNacimiento: [null]
+      fechaNacimiento: [null, Validators.required]
     });
   }
 
