@@ -2,7 +2,7 @@
 <div class="container">
     <h1>LIST</h1>
     <div class="row">
-        <app-student-card *ngFor="let student of studentList"></app-student-card>
+        <app-student-card *ngFor="let student of studentList" [estudiante]="student"></app-student-card>
     </div>
 </div>
 <app-footer></app-footer>

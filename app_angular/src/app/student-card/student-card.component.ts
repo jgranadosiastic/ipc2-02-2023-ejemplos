@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Estudiante } from 'src/entities/Estudiante';
 
 @Component({
   selector: 'app-student-card',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class StudentCardComponent {
 
+  @Input()
+  estudiante!: Estudiante;
+  @Input()
+  verDetalle: boolean;
+
+  constructor() {
+    this.verDetalle = true;
+  }
 }

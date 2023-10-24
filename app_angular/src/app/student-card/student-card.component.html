@@ -1,1 +1,11 @@
-<p>student-card works!</p>
+<div class="col-md-12 card">
+    <div class="card-body">
+        <h5 class="card-title">Carnet: {{estudiante.carnet}}</h5>
+        <p class="card-text">Nombre: {{estudiante.nombre}}</p>
+        <p class="card-text">Apellidos: {{estudiante.nombre}}</p>
+        <p class="card-text">Fecha NAcimiento: {{estudiante.fechaNacimiento}}</p>
+        <a *ngIf="verDetalle"
+         [routerLink]="['/students',estudiante.carnet]" class="btn btn-primary">Ver detalles</a>
+    </div>
+
+</div>

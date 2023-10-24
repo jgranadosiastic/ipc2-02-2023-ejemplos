@@ -16,4 +16,12 @@ export class EstudianteService {
         console.log('connectando con el BE: ' + estudiante);
         return this.httpClient.post<Estudiante>(this.API_URL + "students", estudiante);
     }
+
+    public getAllStudents(): Observable<Estudiante[]> {
+        return this.httpClient.get<Estudiante[]>(this.API_URL + "students");
+    }
+
+    public getStudent(carnet: string): Observable<Estudiante> {
+        return this.httpClient.get<Estudiante>(this.API_URL + "students?carnet=" + carnet);
+    }
 }
