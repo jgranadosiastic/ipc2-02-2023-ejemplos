@@ -3,6 +3,21 @@
     <h1>VIEW</h1>
     <div class="row">
         <app-student-card [estudiante]="student" [verDetalle]="false"></app-student-card>
+
+        <a class="btn btn-success col-md-12" href="{{downloadUrl}}">Descargar pdf</a>
+
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="inputPdf">Subir pdf</label>
+                    <input type="file" (change)="processFile($event)"/>
+                    <button class="btn btn-primary" (click)="uploadToServer()">Subir</button>
+                    <div *ngIf="fileUploaded">
+                        Archivo subido correctamente
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <app-footer></app-footer>
